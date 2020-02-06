@@ -1,0 +1,22 @@
+.striker{
+    text-decoration: line-through;
+}
+
+.add_post {
+	padding: 12px 0px 12px 0px;
+	float: right !important;
+}
+
+.edit_btn {
+	margin-top: 10px;
+	float: right;
+}
+
+a{
+    color: black;
+}
+a:hover{
+    text-decoration: none;
+    color: #2518b3;
+    font-weight: bold;
+}

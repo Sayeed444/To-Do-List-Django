@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <br><br>
+        <h2 class="text-center">To-Do List</h2>
+        <section class="add_post">
+            <form class="form-inline " method="POST">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input class="form-control" type="text" name="name" placeholder="Add To-Do List">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" type="submit">Add</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+        <table class="table table-bordered">
+            {% for list in lists %}
+                {% if list.completed %}
+                    <tr class="table-primary">
+                        <td class="striker"><a href="{% url 'edit' list.id %}">{{ list.name }}</a></td>
+                        <td class="text-center"><a href="{% url 'uncross' list.id %}">Uncross</a></td>
+                        <td class="text-center"><a href="{% url 'delete' list.id %}">Delete</a></td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td><a href="{% url 'edit' list.id %}">{{ list.name }}</a></td>
+                        <td class="text-center"><a href="{% url 'cross_off' list.id %}">Cross OFF</a></td>
+                        <td class="text-center"><a href="{% url 'delete' list.id %}">Delete</a></td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

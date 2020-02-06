@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <br>
+        <h2 class="text-center">Edit Post</h2>
+        <br>
+        {% if lists %}
+            <form method="POST">
+                {% csrf_token %}
+                <div class="col-md-6 offset-md-3">
+                    <input class="form-control" type="text" name="name" value="{{ lists.name }}" placeholder="{{ lists.name }}">
+                    <input type="hidden" value="{{ lists.completed }}" name="completed" >
+                    <button class="btn btn-outline-secondary edit_btn" type="submit">Edit Post</button>
+                </div>
+            </form>
+        {% endif %}
+    </div>
+{% endblock %}
